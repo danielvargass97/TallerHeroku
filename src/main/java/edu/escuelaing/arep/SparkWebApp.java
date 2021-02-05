@@ -11,7 +11,7 @@ public class SparkWebApp {
 	public static void main(String[] args) {
 		port(getPort());
 		get("/input", (req, res) -> inputPage(req, res));
-		get("/output", (req, res) -> "Hello Heroku");
+		get("/output", (req, res) -> outputPage(req, res));
 	}
 		
 		static int getPort() {
@@ -24,19 +24,69 @@ public class SparkWebApp {
 		private static String inputPage(Request req, Response rep) {
 			String page ="<!DOCTYPE html>"
 						+ "<html>"
+						+ "<center>"
 			            + "<body>"
-			            + "<h2>Calculation of the mean and standard deviation</h2>"
+			            + "<h1>Calculation of the mean and standard deviation</h1>"
 			            + "<form action=\"/results\">"
-			            + "  Ingrese los numeros que desee que sean procesados, separados por comas <br>"
-			            + "  <input type=\"text\" name=\"numbers\" >"
+			            + "<h2> Enter the numbers you want to be processed, separated by commas</h2> <br>"
+			            + "  <input type=\"text\" name=\"numbers\" size=50 >"
 			            + "  <br><br>"
-			            + "  <input type=\"submit\" value=\"Submit\">"
+			            + "  <input type=\"submit\" value=\"Calculate\" formaction=\"/output\">"
 			            + "</form>"
-			            + "<p>Si da click en el boton \"Submit\", se enviaran los datos a un pagina llamada \"/results\".</p>"
 			            + "</body>"
+			            + "</center>"
 			            + "</html>";
 					
 			return  page;
+		}
+		
+		private static String outputPage(Request req, Response rep) {
+			
+			String page;
+			Mean mean = new Mean();
+			StandardDeviation SD = new StandardDeviation();
+			
+			LinkedList<Node> ll = new LinkedList<Node>();
+			String [] aux = req.queryParams("numbers").split(",");
+			
+			for (String x:aux) {
+				try {
+					ll.add(Double.parseDouble(x));
+				} catch (NumberFormatException n) {
+					page ="<!DOCTYPE html>"
+						  + "<html>"
+						  + "<center>"
+				          + "<body>"
+				          + "<h1>Data entered incorrectly.</h1>"
+				          + "<form action=\"/DataIncorrectly\">" 
+				          + "  <input type=\"submit\" value=\"Ok\" formaction=\"/input\">"
+				          + "</form>"
+				          + "</body>"
+				          + "</center>"
+				          + "</html>";
+				}
+			}
+			
+			mean.calculateMean(ll);
+			SD.calculateStandardDeviation(ll);
+			
+			double Mean = mean.getResult();
+			double sd = SD.getResult();
+			
+			page ="<!DOCTYPE html>"
+				  + "<html>"
+			      + "<center>"
+			      + "<body>"
+			      + "<h1>Results.</h1>"
+			      + "<h3>Mean: "+Mean+"</h3><br>"
+			      + "<h3>Standard Deviation: "+sd+"</h3><br>"
+			      + "<form action=\"/Ok\">" 
+				  + "  <input type=\"submit\" value=\"Ok\" formaction=\"/input\">"
+				  + "</form>"
+			      + "</body>"
+			      + "</center>"
+			      + "</html>"; 
+			return page;
 		}
 }
 

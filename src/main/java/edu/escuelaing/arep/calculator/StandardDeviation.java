@@ -42,6 +42,6 @@ public class StandardDeviation {
 	 * @return result
 	 */
 	public double getResult() {
-		return result;
+		return Math.round(result*100.0)/100.0;
 	}
 }
