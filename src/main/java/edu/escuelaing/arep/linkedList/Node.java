@@ -14,7 +14,7 @@ public class Node {
 	/**
 	 * Creator of the Node class. The value must be entered 
 	 * as a parameter. Set the variable "next" as null.
-	 * @param double value (value to node)
+	 * @param Value double  (value to node)
 	 */
 	public Node(double value){
 		this.value = value;

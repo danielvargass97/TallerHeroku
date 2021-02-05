@@ -6,14 +6,31 @@ import edu.escuelaing.arep.linkedList.*;
 import spark.Request;
 import spark.Response;
 
+/**
+ * 
+ * @author Daniel
+ *
+ */
 public class SparkWebApp {
-
+	
+	/**
+	 * This main method uses SparkWeb static methods and lambda functions to create 
+	 * a App that calculate the mean and estandar deviation of a number list entered 
+	 * by a field on the web page
+	 */
 	public static void main(String[] args) {
 		port(getPort());
 		get("/input", (req, res) -> inputPage(req, res));
 		get("/output", (req, res) -> outputPage(req, res));
 	}
-		
+	
+		/**
+		 * This method reads the default port as specified by the PORT variable in
+		 * the environment.
+		 *
+		 * Heroku provides the port automatically so you need this to run the
+		 * project on Heroku.
+		 */
 		static int getPort() {
 			if (System.getenv("PORT") != null) {
 				return Integer.parseInt(System.getenv("PORT"));
