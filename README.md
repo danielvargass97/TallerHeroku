@@ -55,6 +55,7 @@ On the web page the numbers must be entered in the input field separated by comm
 
 ## Heroku
 
+https://fierce-cove-85619.herokuapp.com/input
 
 # Design
 
@@ -64,10 +65,8 @@ On the web page the numbers must be entered in the input field separated by comm
 
 The design has 5 main classes divided into 2 packages. In the package LinkedList (linked list) in which are the Node classes (node) that is responsible for the creation of nodes and their links for the linked list; The LinkedList class (linked list) which creates our list, implements the list methods in JAVA in addition to the data extraction, storage and deletion methods used for the respective calculations. The Calculator class (calculator) in which are the Mean (mean) and StandardDeviation (standard deviation) classes. Which are in charge of making their respective calculation using the linked list designed by the student. The facade package, where is the SparkWebApp class where we create our view for the user, interact with it and attend to their needs.
 
-# Autores
+# Author
 
 Daniel Vargas Ordoñez.
 
-# Licencia
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
