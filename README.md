@@ -50,25 +50,23 @@ To run the program locally using Heroku, you need from the command line:
 
 On the web page the numbers must be entered in the input field separated by commas.
 
-
-## Running the tests
-
-
-
 ### Generar JavaDoc
 
 
 ## Heroku
 
+https://fierce-cove-85619.herokuapp.com/input
+
+# Design
+
+![Diseño](https://user-images.githubusercontent.com/50029247/107302290-27ef0780-6a4b-11eb-9865-4963d5acb25e.png)%
+
+# Explanatio to the design
+
+The design has 5 main classes divided into 2 packages. In the package LinkedList (linked list) in which are the Node classes (node) that is responsible for the creation of nodes and their links for the linked list; The LinkedList class (linked list) which creates our list, implements the list methods in JAVA in addition to the data extraction, storage and deletion methods used for the respective calculations. The Calculator class (calculator) in which are the Mean (mean) and StandardDeviation (standard deviation) classes. Which are in charge of making their respective calculation using the linked list designed by the student. The facade package, where is the SparkWebApp class where we create our view for the user, interact with it and attend to their needs.
+
+# Author
+
+Daniel Vargas Ordoñez.
 
 
-# Descripción del Diseño
-
-
-# Autores
-
-
-
-# Licencia
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
